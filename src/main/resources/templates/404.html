@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>404 页面</title>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <link rel="shortcut icon" href="../static/favicon.ico" th:href="@{/favicon.ico}">
+    <style type=text/css>
+        .mod-notfound {
+            MARGIN-TOP: 100px;
+            BACKGROUND: #fff;
+            HEIGHT: 585px;
+            TEXT-ALIGN: center;
+            border-radius: 10px;
+            font-family:-apple-system-font,BlinkMacSystemFont,"Microsoft YaHei UI","Microsoft YaHei","PingFang SC","Helvetica Neue","Hiragino Sans GB",Arial,sans-serif;
+        }
+    </style>
+</head>
+<body>
+<section class=mod-page-body>
+    <div class="mod-page-main wordwrap clearfix">
+        <div class=x-page-container>
+            <div class="mod-notfound grid-98"><IMG class="img-notfound" src="./static/images/404-qr.png"  th:src="@{/images/404-qr.png}">
+                <P style="font-size: 24px;">啊~ 哦~</P>
+                <P style="font-size: 24px;">您要查看的页面不存在或已删除！</P>
+                <P style="margin-bottom: 30px">请检查您输入的网址是否正确</P>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

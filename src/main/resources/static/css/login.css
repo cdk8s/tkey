@@ -1,0 +1,516 @@
+
+html {
+  line-height: 1.15;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+[type="checkbox"], [type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  line-height: 19px;
+  vertical-align: sub;
+}
+
+body {
+  margin: 0;
+  padding: 0px;
+  min-width: 278px;
+  background: #f7f7f7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Liberation Sans", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, SimSun, "WenQuanYi Zen Hei Sharp", sans-serif;
+  font-size: 14px;
+  line-height: 1.33;
+}
+
+
+main {
+  display: block;
+}
+
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+
+pre {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+
+a {
+  cursor: pointer;
+  background-color: transparent;
+  color: #137eff;
+}
+
+
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+}
+
+
+b, strong {
+  font-weight: bolder;
+}
+
+
+code, kbd, samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+
+small {
+  font-size: 80%;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+
+img {
+  border-style: none;
+}
+
+
+button, input, optgroup, select, textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+
+button, input {
+  /* 1 */
+  overflow: visible;
+}
+
+
+button, select {
+  /* 1 */
+  text-transform: none;
+}
+
+
+button, [type="button"], [type="reset"], [type="submit"] {
+  -webkit-appearance: button;
+}
+
+
+button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+
+button:-moz-focusring, [type="button"]:-moz-focusring, [type="reset"]:-moz-focusring, [type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
+}
+
+
+progress {
+  vertical-align: baseline;
+}
+
+
+textarea {
+  overflow: auto;
+}
+
+
+[type="checkbox"], [type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+
+[type="number"]::-webkit-inner-spin-button, [type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+
+details {
+  display: block;
+}
+
+
+summary {
+  display: list-item;
+}
+
+
+template {
+  display: none;
+}
+
+
+[hidden] {
+  display: none;
+}
+
+
+/* 代码*/
+
+.header {
+  margin-top: 60px;
+  position: relative;
+}
+
+.login-wrapper {
+  display: flex;
+  width: 1000px;
+  height: 500px;
+  background: #fff;
+  box-shadow: 0px 20px 80px 0px rgba(0, 0, 0, 0.3);
+  margin: 50px auto 0 auto;
+}
+
+.content-left {
+  width: 500px;
+  height: 500px;
+  background-image: url("../images/tkey-tool.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.content-right {
+  color: #666;
+  box-sizing: border-box;
+  width: 50%;
+  padding: 5px 75px 48px;
+}
+
+.right-header {
+  display: flex;
+}
+
+.right-header-h2 {
+  flex: 1;
+  margin-top: 20px;
+  text-align: center;
+  color: #666666;
+}
+
+.right-header-span {
+  color: #b3b3b3;
+  text-align: right;
+  flex: 1;
+}
+
+.right-form-wrapper {
+  margin-top: 0;
+}
+
+.username-input-default {
+  box-sizing: border-box;
+  padding-left: 20px;
+  margin-top: 10px;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  line-height: 40px;
+  border: 1px solid #e5e5e5;
+  border-radius: 0em 0.2857rem 0.2857rem 0em;
+  background: #ffffff;
+}
+
+.username-input-default::-webkit-input-placeholder {
+  color: #b3b3b3;
+}
+
+.username-input-default:-moz-placeholder {
+  color: #b3b3b3;
+}
+
+.username-input-default::-moz-placeholder {
+  color: #b3b3b3;
+}
+
+.username-input-default::-ms-input-placeholder {
+  color: #b3b3b3;
+}
+
+.password-input-default {
+  box-sizing: border-box;
+  padding-left: 20px;
+  margin-top: 5px;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  line-height: 40px;
+  border: 1px solid #e5e5e5;
+  border-radius: 0em 0.2857rem 0.2857rem 0em;
+  background: #ffffff;
+}
+
+.password-input-default::-webkit-input-placeholder {
+  color: #b3b3b3;
+}
+
+.password-input-default:-moz-placeholder {
+  color: #b3b3b3;
+}
+
+.password-input-default::-moz-placeholder {
+  color: #b3b3b3;
+}
+
+.password-input-default::-ms-input-placeholder {
+  color: #b3b3b3;
+}
+
+.username-input-error {
+  box-sizing: border-box;
+  padding-left: 20px;
+  margin-top: 10px;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  line-height: 40px;
+  border: 1px solid #dbb1b1;
+  border-radius: 0em 0.2857rem 0.2857rem 0em;
+  background: #fff0f0;
+}
+
+.password-input-error {
+  box-sizing: border-box;
+  padding-left: 20px;
+  margin-top: 5px;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  line-height: 40px;
+  border: 1px solid #dbb1b1;
+  border-radius: 0em 0.2857rem 0.2857rem 0em;
+  background: #fff0f0;
+}
+
+.checkMe {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.text-login {
+
+}
+
+.submit-btn-wrapper {
+  margin-top: 15px;
+  position: relative;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 8px 26px;
+  color: #fff;
+  background: #78b2ff;
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 22px;
+  letter-spacing: 4px;
+}
+
+.btn-loading {
+  position: absolute;
+  left: 60%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 18px;
+  height: 18px;
+  display: none;
+}
+
+.logo-img {
+  height: 60px;
+  text-align: center;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.footer {
+  margin-top: 142px;
+  color: #8c92a4;
+  text-align: center;
+}
+
+.ml5 {
+  margin-left: 5px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.mt15 {
+  margin-top: 10px;
+}
+
+.tac {
+  text-align: center;
+}
+
+@media screen and (max-width: 400px) and (min-width: 300px) {
+  .content-left {
+    display: none;
+  }
+}
+
+.other-login-wrapper {
+  margin-top: 13px;
+}
+
+.line {
+  display: inline-block;
+  width: 33%;
+  height: 1px;
+  background-color: #ccc;
+  vertical-align: middle;
+}
+
+.other-login {
+  padding: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  color: #b3b3b3;
+}
+
+.login-logo-icon {
+  display: flex;
+  justify-content: center;
+}
+
+.login-logo-icon-item {
+  z-index: 2;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  margin: 0 10px;
+  border-radius: 50%;
+}
+
+/*qq 企业微信 钉钉 微博 微信 GitHub google Facebook 推特 */
+
+.mt25 {
+  margin-top: 25px;
+}
+
+.dn {
+  display: none;
+}
+
+.db {
+  display: block;
+}
+
+.username-error {
+  height: 18px;
+  margin: 5px 0 0 0;
+  color: #d95c5c;
+}
+
+.password-error {
+  margin: 5px 0 0 0;
+  color: #d95c5c;
+}
+
+.opacity0 {
+  opacity: 0;
+  transition: opacity .5s;
+}
+
+.opacity1 {
+  opacity: 1;
+  transition: opacity .5s;
+}

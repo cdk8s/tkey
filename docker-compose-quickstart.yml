@@ -1,0 +1,39 @@
+version: '2'
+services:
+  tkey-sso-server:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    container_name: tkey-sso-server
+    image: tkey-sso-server
+    ports:
+      - 9091:9091
+      - 19091:19091
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_REDIS_DATABASE: 0
+      SPRING_REDIS_PORT: 6379
+      SPRING_REDIS_HOST: tkey-sso-server-redis
+      SPRING_REDIS_PASSWORD: 123456
+      TKEY_NODE_NUMBER: 10
+      JAVA_OPTS: "-Xms1024m -Xmx1024m -XX:MetaspaceSize=124m -XX:MaxMetaspaceSize=224m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/data/headDump"
+    networks:
+      - tkey-network
+    depends_on:
+      - tkey-sso-server-redis
+
+
+  tkey-sso-server-redis:
+    image: redis:4
+    container_name: tkey-sso-server-redis
+    command: redis-server --requirepass 123456
+    restart: always
+    ports:
+      - 6379:6379
+    networks:
+      - tkey-network
+
+
+networks:
+  tkey-network:
+    driver: bridge

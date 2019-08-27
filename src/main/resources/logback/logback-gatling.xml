@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="false" debug="false">
+
+    <!--============================================================================================================-->
+
+    <property name="APP_NAME" value="springboot-base-demo"/>
+    <property name="LOG_FILE_ROOT_PATH" value="logs/${APP_NAME}"/>
+
+    <property name="DEFAULT_MAX_FILE_SIZE" value="30MB"/>
+    <property name="DEFAULT_MAX_HISTORY" value="30"/>
+    <property name="DEFAULT_ASYNC_QUEUE_SIZE" value="500"/>
+
+
+    <property name="FILE_LOG_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%msg] [%logger:%line] [%thread]%n"/>
+
+    <!--============================================================================================================-->
+
+    <appender name="ERROR_OUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE_ROOT_PATH}/${APP_NAME}.error.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE_ROOT_PATH}/archived/${APP_NAME}.error.%d{yyyy-MM-dd}_%i.log.gz</fileNamePattern>
+            <maxFileSize>${DEFAULT_MAX_FILE_SIZE}</maxFileSize>
+            <maxHistory>${DEFAULT_MAX_HISTORY}</maxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!--============================================================================================================-->
+
+    <appender name="ASYNC_ERROR" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>${DEFAULT_ASYNC_QUEUE_SIZE}</queueSize>
+        <includeCallerData>true</includeCallerData>
+        <appender-ref ref="ERROR_OUT"/>
+    </appender>
+
+    <!--============================================================================================================-->
+
+    <root level="info">
+        <appender-ref ref="ASYNC_ERROR"/>
+    </root>
+
+    <logger name="com.cdk8s" level="info" additivity="false">
+        <appender-ref ref="ASYNC_ERROR"/>
+    </logger>
+
+    <!--============================================================================================================-->
+
+</configuration>

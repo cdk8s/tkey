@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ERROR 页面</title>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <link rel="shortcut icon" href="../static/favicon.ico" th:href="@{/favicon.ico}">
+    <style type=text/css>
+        .mod-notfound {
+            MARGIN-TOP: 100px;
+            BACKGROUND: #fff;
+            HEIGHT: 585px;
+            TEXT-ALIGN: center;
+            border-radius: 10px;
+            font-family:-apple-system-font,BlinkMacSystemFont,"Microsoft YaHei UI","Microsoft YaHei","PingFang SC","Helvetica Neue","Hiragino Sans GB",Arial,sans-serif;
+        }
+    </style>
+</head>
+<body>
+<section class=mod-page-body>
+    <div class="mod-page-main wordwrap clearfix">
+        <div class=x-page-container>
+            <div class="mod-notfound grid-98"><IMG class="img-notfound" src="./static/images/error-qr.png" th:src="@{/images/error-qr.png}">
+                <P style="font-size: 24px;">啊~ 哦~ 发生错误了：</P>
+                <P style="font-size: 24px;" th:text="${errorMsg}"></P>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

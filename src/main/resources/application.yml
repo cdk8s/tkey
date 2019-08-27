@@ -1,0 +1,44 @@
+
+#=================================================================================
+# 容器相关设置
+
+#=================================================================================
+# spring 组件相关设置
+spring:
+  application:
+    name: tkey-sso-server
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+#    active: 'gatling'
+  jackson:
+    default-property-inclusion: non_null
+    date-format: 'yyyy-MM-dd HH:mm:ss'
+  thymeleaf:
+    encoding: utf-8
+    prefix: 'classpath:/templates/'
+    suffix: '.html'
+    cache: false
+
+
+# actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+  server:
+    servlet:
+      context-path: /tkey-actuator
+
+
+#=================================================================================
+# 其他辅助框架相关配置
+
+#=================================================================================
+# 自定义参数相关配置
+
+
+#=================================================================================

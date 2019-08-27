@@ -1,0 +1,56 @@
+
+#=================================================================================
+# 容器相关设置
+server:
+  port: ${SERVER_PORT:9091}
+  servlet:
+    context-path: /sso
+  tomcat:
+    max-connections: 10000
+    max-threads: 200
+    min-spare-threads: 200
+  connection-timeout: 5000ms
+
+
+debug: false
+logging:
+  config: classpath:logback/logback-gatling.xml
+#=================================================================================
+# spring 组件相关设置
+spring:
+  redis:
+    database: ${SPRING_REDIS_DATABASE:0}
+    port: ${SPRING_REDIS_PORT:6379}
+    host: ${SPRING_REDIS_HOST:redis.cdk8s.com}
+    password: ${SPRING_REDIS_PASSWORD:123456}
+    timeout: 10000ms
+    lettuce:
+      pool:
+        max-active: -1
+        max-idle: -1
+        min-idle: 200
+        max-wait: 2000ms
+
+# actuator
+management:
+  server:
+    port: 19091
+
+#=================================================================================
+# 其他辅助框架相关配置
+
+#=================================================================================
+# 自定义参数相关配置
+tkey:
+  sso:
+    oauth:
+      error-uri-msg: "See the full API docs at https://github.com/cdk8s"
+      # 用于 token 前缀，表名是哪个节点服务生成的 token
+      node-number: ${TKEY_NODE_NUMBER:10}
+      tgc-cookie-secure: false
+      remember-me-max-time-to-live-in-seconds: 604800
+      code-max-time-to-live-in-seconds: 120
+      access-token-max-time-to-live-in-seconds: 43200
+      refresh-token-max-time-to-live-in-seconds: 86400
+      tgc-and-user-info-max-time-to-live-in-seconds: 86400
+#=================================================================================
