@@ -35,17 +35,16 @@
 - 上图的视频讲解稍后会上传到 B 站
 - OAuth2.0 授权码模式细节时序图可以查看：[点击我查看](http://img.gitnavi.com/tkey/tkey-oauth.png)
 
-## Preview
+## Preview（Gif）
 
-- **以下全部都是 Gif 动图**
-- 登录完整过程：[主图](https://upload-images.jianshu.io/upload_images/19119711-cd483cefb50eb763.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/tkey-sso-login.gif)
-- Grafana 监控大屏[主图](https://upload-images.jianshu.io/upload_images/19119711-af9b3d3411db1da1.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/actuator-prometheus-grafana.gif)
-- GoAccess 监控大屏：[主图](https://upload-images.jianshu.io/upload_images/19119711-b3bcc4edcf0df007.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/goaccess-data.gif)
-- Postman 接口调用：[主图](https://upload-images.jianshu.io/upload_images/19119711-a8316b794bf4bf56.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/postman-request-api.gif)
-- Docker 容器管理：[主图](https://upload-images.jianshu.io/upload_images/19119711-281dd6b40f2d7fc7.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/portainer-docker.gif)
-- Jenkins 部署流水线：[主图](https://upload-images.jianshu.io/upload_images/19119711-2d20e2fba98ddbbd.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/tkey-jenkins.gif)
-- JProfiler 压测变化：[主图](https://upload-images.jianshu.io/upload_images/19119711-922b8202de206b06.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/tkey-jprofiler.gif)
-- VisualVM 压测变化：[主图](https://upload-images.jianshu.io/upload_images/19119711-067bcdf1a6e95b44.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/tkey-visualvm.gif)
+- **登录完整过程：** [主图](https://upload-images.jianshu.io/upload_images/19119711-cd483cefb50eb763.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/tkey-sso-login.gif)
+- **Grafana 监控大屏：** [主图](https://upload-images.jianshu.io/upload_images/19119711-af9b3d3411db1da1.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/actuator-prometheus-grafana.gif)
+- **GoAccess 监控大屏：** [主图](https://upload-images.jianshu.io/upload_images/19119711-b3bcc4edcf0df007.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/goaccess-data.gif)
+- **Postman 接口调用：** [主图](https://upload-images.jianshu.io/upload_images/19119711-a8316b794bf4bf56.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/postman-request-api.gif)
+- **Docker 容器管理：** [主图](https://upload-images.jianshu.io/upload_images/19119711-281dd6b40f2d7fc7.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/portainer-docker.gif)
+- **Jenkins 部署流水线：** [主图](https://upload-images.jianshu.io/upload_images/19119711-2d20e2fba98ddbbd.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/tkey-jenkins.gif)
+- **JProfiler 压测变化：** [主图](https://upload-images.jianshu.io/upload_images/19119711-922b8202de206b06.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/tkey-jprofiler.gif)
+- **VisualVM 压测变化：** [主图](https://upload-images.jianshu.io/upload_images/19119711-067bcdf1a6e95b44.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/tkey-visualvm.gif)
 
 
 ## Quick Start
