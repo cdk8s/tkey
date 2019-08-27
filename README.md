@@ -37,6 +37,7 @@
 
 ## Preview（Gif）
 
+- 主图需要右键复制地址，然后粘贴到地址栏才能打开 Orz..
 - **登录完整过程：** [主图](https://upload-images.jianshu.io/upload_images/19119711-cd483cefb50eb763.gif)、[备图](http://img.gitnavi.com/tkey/tkey-sso-login.gif)
 - **Grafana 监控大屏：** [主图](https://upload-images.jianshu.io/upload_images/19119711-af9b3d3411db1da1.gif)、[备图](http://img.gitnavi.com/tkey/actuator-prometheus-grafana.gif)
 - **GoAccess 监控大屏：** [主图](https://upload-images.jianshu.io/upload_images/19119711-b3bcc4edcf0df007.gif)、[备图](http://img.gitnavi.com/tkey/goaccess-data.gif)
