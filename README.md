@@ -37,22 +37,22 @@
 
 ## Preview（Gif）
 
-- **登录完整过程：** [主图](https://upload-images.jianshu.io/upload_images/19119711-cd483cefb50eb763.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/tkey-sso-login.gif)
-- **Grafana 监控大屏：** [主图](https://upload-images.jianshu.io/upload_images/19119711-af9b3d3411db1da1.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/actuator-prometheus-grafana.gif)
-- **GoAccess 监控大屏：** [主图](https://upload-images.jianshu.io/upload_images/19119711-b3bcc4edcf0df007.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/goaccess-data.gif)
-- **Postman 接口调用：** [主图](https://upload-images.jianshu.io/upload_images/19119711-a8316b794bf4bf56.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/postman-request-api.gif)
-- **Docker 容器管理：** [主图](https://upload-images.jianshu.io/upload_images/19119711-281dd6b40f2d7fc7.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/portainer-docker.gif)
-- **Jenkins 部署流水线：** [主图](https://upload-images.jianshu.io/upload_images/19119711-2d20e2fba98ddbbd.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/tkey-jenkins.gif)
-- **JProfiler 压测变化：** [主图](https://upload-images.jianshu.io/upload_images/19119711-922b8202de206b06.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/tkey-jprofiler.gif)
-- **VisualVM 压测变化：** [主图](https://upload-images.jianshu.io/upload_images/19119711-067bcdf1a6e95b44.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/tkey-visualvm.gif)
+- **登录完整过程：** [主图](https://upload-images.jianshu.io/upload_images/19119711-cd483cefb50eb763.gif)、[备图](http://img.gitnavi.com/tkey/tkey-sso-login.gif)
+- **Grafana 监控大屏：** [主图](https://upload-images.jianshu.io/upload_images/19119711-af9b3d3411db1da1.gif)、[备图](http://img.gitnavi.com/tkey/actuator-prometheus-grafana.gif)
+- **GoAccess 监控大屏：** [主图](https://upload-images.jianshu.io/upload_images/19119711-b3bcc4edcf0df007.gif)、[备图](http://img.gitnavi.com/tkey/goaccess-data.gif)
+- **Postman 接口调用：** [主图](https://upload-images.jianshu.io/upload_images/19119711-a8316b794bf4bf56.gif)、[备图](http://img.gitnavi.com/tkey/postman-request-api.gif)
+- **Docker 容器管理：** [主图](https://upload-images.jianshu.io/upload_images/19119711-281dd6b40f2d7fc7.gif)、[备图](http://img.gitnavi.com/tkey/portainer-docker.gif)
+- **Jenkins 部署流水线：** [主图](https://upload-images.jianshu.io/upload_images/19119711-2d20e2fba98ddbbd.gif)、[备图](http://img.gitnavi.com/tkey/tkey-jenkins.gif)
+- **JProfiler 压测变化：** [主图](https://upload-images.jianshu.io/upload_images/19119711-922b8202de206b06.gif)、[备图](http://img.gitnavi.com/tkey/tkey-jprofiler.gif)
+- **VisualVM 压测变化：** [主图](https://upload-images.jianshu.io/upload_images/19119711-067bcdf1a6e95b44.gif)、[备图](http://img.gitnavi.com/tkey/tkey-visualvm.gif)
 
 
 ## Quick Start
 
-- 单元测试：[主图](https://upload-images.jianshu.io/upload_images/19119711-6bc18bb5b1063911.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/tkey-junit-test.gif)
-- TKey SSO Server JAR 方式部署过程：[主图](https://upload-images.jianshu.io/upload_images/19119711-72e375355e3df651.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/tkey-runapp-jar.gif)
-- TKey SSO Server Docker Compose：[主图](https://upload-images.jianshu.io/upload_images/19119711-10011adf8a15e049.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/tkey-sso-server-docker-compose.gif)
-- TKey SSO Client Management Docker Compose：[主图](https://upload-images.jianshu.io/upload_images/19119711-8edd4a914ed4540a.gif?imageMogr2/auto-orient/strip)、[备图](http://img.gitnavi.com/tkey/tkey-sso-client-management-docker-compose.gif)
+- 单元测试：[主图](https://upload-images.jianshu.io/upload_images/19119711-6bc18bb5b1063911.gif)、[备图](http://img.gitnavi.com/tkey/tkey-junit-test.gif)
+- TKey SSO Server JAR 方式部署过程：[主图](https://upload-images.jianshu.io/upload_images/19119711-72e375355e3df651.gif)、[备图](http://img.gitnavi.com/tkey/tkey-runapp-jar.gif)
+- TKey SSO Server Docker Compose：[主图](https://upload-images.jianshu.io/upload_images/19119711-10011adf8a15e049.gif)、[备图](http://img.gitnavi.com/tkey/tkey-sso-server-docker-compose.gif)
+- TKey SSO Client Management Docker Compose：[主图](https://upload-images.jianshu.io/upload_images/19119711-8edd4a914ed4540a.gif)、[备图](http://img.gitnavi.com/tkey/tkey-sso-client-management-docker-compose.gif)
 - 项目完全依赖 Lombok（推荐），如果没有用过可以参考 [该篇文章](https://github.com/cdk8s/cdk8s-team-style/blob/master/dev/backend/java/java-lombok.md)
 - 项目最优搭配 IntelliJ IDEA，如果还没用过可以参考 [该系列文章（我们的作品）](https://github.com/judasn/IntelliJ-IDEA-Tutorial)
 - 由于项目刚开源出来，Maven 官方库还在申请，自己封装的 TKey SSO Client Java 还在审核，目前大家先本地 package install
