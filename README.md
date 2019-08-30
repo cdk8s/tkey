@@ -56,7 +56,7 @@
 - TKey SSO Client Management Docker Compose：[主图](https://upload-images.jianshu.io/upload_images/19119711-8edd4a914ed4540a.gif)、[备图](http://img.gitnavi.com/tkey/tkey-sso-client-management-docker-compose.gif)
 - 项目完全依赖 Lombok（推荐），如果没有用过可以参考 [该篇文章](https://github.com/cdk8s/cdk8s-team-style/blob/master/dev/backend/java/java-lombok.md)
 - 项目最优搭配 IntelliJ IDEA，如果还没用过可以参考 [该系列文章（我们的作品）](https://github.com/judasn/IntelliJ-IDEA-Tutorial)
-- 由于项目刚开源出来，Maven 官方库还在申请，自己封装的 TKey SSO Client Java 还在审核，目前大家先本地 package install
+- Maven 中央仓库已经申请下来，大家现在可以直接使用我们自己封装的 REST API 客户端了
 
 ## Documentation
 
