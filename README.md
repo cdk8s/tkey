@@ -141,6 +141,9 @@
 ## Adopters
 
 - 去申请：[Github](https://github.com/cdk8s/tkey-issues/issues/1)、[Gitee](https://gitee.com/cdk8s/tkey-issues/issues/1)
+- 以企业角色联系我进行咨询有优先权，我们会花更多耐心进行讲解和帮助
+- 所以，请在加好友之后先表明公司、立场
+
 
 ## Sponsors
 
