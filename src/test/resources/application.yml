@@ -4,7 +4,6 @@
 
 #=================================================================================
 # spring 组件相关设置
-
 spring:
   application:
     name: tkey-sso-server
@@ -17,10 +16,10 @@ spring:
     encoding: utf-8
     prefix: 'classpath:/templates/'
     suffix: '.html'
-    #开发时关闭缓存,不然没法看到实时页面（必须 false 才能热部署）
     cache: false
 
 
+# actuator
 management:
   endpoints:
     web:
@@ -32,7 +31,7 @@ management:
   server:
     servlet:
       context-path: /tkey-actuator
-    port: 8811
+
 
 #=================================================================================
 # 其他辅助框架相关配置

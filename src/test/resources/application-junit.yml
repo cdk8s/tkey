@@ -2,7 +2,7 @@
 #=================================================================================
 # 容器相关设置
 server:
-  port: 9091
+  port: ${SERVER_PORT:9091}
   servlet:
     context-path: /sso
   tomcat:
@@ -26,10 +26,16 @@ spring:
     timeout: 10000ms
     lettuce:
       pool:
-        max-active: 200
-        max-idle: 200
-        min-idle: 100
+        max-active: -1
+        max-idle: -1
+        min-idle: 200
         max-wait: 2000ms
+
+# actuator
+management:
+  server:
+    port: 19091
+
 #=================================================================================
 # 其他辅助框架相关配置
 
