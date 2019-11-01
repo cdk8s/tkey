@@ -51,6 +51,7 @@ public class ApplicationTestDataInitRunner implements ApplicationRunner {
 		accessTokenRedisService.set("AT-102-uUCkO2NgITHWJSD16g89C9loMwCVSQqh", getAccessToken(), oauthProperties.getAccessTokenMaxTimeToLiveInSeconds());
 		refreshTokenRedisService.set("RT-103-zIYUBA0ddql5cyYGEdpmPcRJH63hOVpQ", getRefreshToken(), oauthProperties.getRefreshTokenMaxTimeToLiveInSeconds());
 		codeRedisService.set("OC-106-uUddPxoWCEa4NBO5GaVIRJOTZLlWbHNr", getCode(), oauthProperties.getCodeMaxTimeToLiveInSeconds());
+		codeRedisService.set("OC-107-uUddPxoWCEa4NBO5GaVIRJOTZLlWbHNr", getCode(), oauthProperties.getCodeMaxTimeToLiveInSeconds());
 
 		log.info("=================================预设 Redis 测试数据 End=================================");
 

@@ -39,7 +39,7 @@ public class AuthorizationCodeByHeaderTest {
 
 	private static final String ACCESS_TOKEN = "AT-102-uUCkO2NgITHWJSD16g89C9loMwCVSQqh";
 	private static final String REFRESH_TOKEN = "RT-103-zIYUBA0ddql5cyYGEdpmPcRJH63hOVpQ";
-	private static final String CODE = "OC-106-uUddPxoWCEa4NBO5GaVIRJOTZLlWbHNr";
+	private static final String CODE = "OC-107-uUddPxoWCEa4NBO5GaVIRJOTZLlWbHNr";
 
 	private static final String USERNAME = "admin";
 	private static final String PASSWORD = "123456";
