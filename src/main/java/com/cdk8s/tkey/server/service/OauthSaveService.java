@@ -66,9 +66,7 @@ public class OauthSaveService {
 	}
 
 	@Async
-	public void saveTgcToRedisAndCookie(HttpServletResponse response, String tgc, String userInfoRedisKey, String userAgent, String requestIp, boolean isRememberMe) {
-		Integer maxTimeToLiveInSeconds = oauthProperties.getTgcAndUserInfoMaxTimeToLiveInSeconds();
-
+	public void saveTgcToRedisAndCookie(String tgc, Integer maxTimeToLiveInSeconds, String userInfoRedisKey, String userAgent, String requestIp, boolean isRememberMe) {
 		OauthTgcToRedisBO oauthTgcToRedisBO = new OauthTgcToRedisBO();
 		oauthTgcToRedisBO.setIat(DatetimeUtil.currentEpochSecond());
 		oauthTgcToRedisBO.setUserAgent(userAgent);
@@ -76,12 +74,6 @@ public class OauthSaveService {
 		oauthTgcToRedisBO.setBoolIsRememberMe(isRememberMe);
 		oauthTgcToRedisBO.setBoolIsMobile(UserAgentUtil.isMobile(userAgent));
 		oauthTgcToRedisBO.setUserInfoRedisKey(userInfoRedisKey);
-
-		if (oauthTgcToRedisBO.getBoolIsRememberMe()) {
-			maxTimeToLiveInSeconds = oauthProperties.getRememberMeMaxTimeToLiveInSeconds();
-		}
-
-		CookieUtil.setCookie(response, GlobalVariable.OAUTH_SERVER_COOKIE_KEY, tgc, maxTimeToLiveInSeconds, true, oauthProperties.getTgcCookieSecure());
 
 		oauthTgcToRedisBO.setIat(DatetimeUtil.currentEpochSecond());
 		tgcRedisService.set(tgc, oauthTgcToRedisBO, maxTimeToLiveInSeconds, TimeUnit.SECONDS);

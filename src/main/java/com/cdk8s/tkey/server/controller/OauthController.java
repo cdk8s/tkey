@@ -142,7 +142,13 @@ public class OauthController {
 		boolean isRememberMe = oauthFormLoginParam.getBoolIsRememberMe();
 		String tgc = oauthGenerateService.generateTgc();
 
-		oauthSaveService.saveTgcToRedisAndCookie(response, tgc, userInfoRedisKey, userAgent, requestIp, isRememberMe);
+		Integer maxTimeToLiveInSeconds = oauthProperties.getTgcAndUserInfoMaxTimeToLiveInSeconds();
+		if (isRememberMe) {
+			maxTimeToLiveInSeconds = oauthProperties.getRememberMeMaxTimeToLiveInSeconds();
+		}
+		CookieUtil.setCookie(response, GlobalVariable.OAUTH_SERVER_COOKIE_KEY, tgc, maxTimeToLiveInSeconds, true, oauthProperties.getTgcCookieSecure());
+
+		oauthSaveService.saveTgcToRedisAndCookie(tgc, maxTimeToLiveInSeconds, userInfoRedisKey, userAgent, requestIp, isRememberMe);
 
 		String redirectUrl;
 		if (StringUtil.equalsIgnoreCase(oauthFormLoginParam.getResponseType(), GlobalVariable.OAUTH_TOKEN_RESPONSE_TYPE)) {
