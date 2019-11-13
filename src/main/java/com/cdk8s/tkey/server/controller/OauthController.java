@@ -91,7 +91,8 @@ public class OauthController {
 
 		String userInfoRedisKey = oauthCheckParamService.checkCookieTgc(request.getHeader(GlobalVariable.HTTP_HEADER_USER_AGENT), IPUtil.getIp(request), tgcCookieValue);
 
-		String redirectUrl;
+		String finalRedirectUrl;
+		String redirectUri = oAuthAuthorizeParam.getRedirectUri();
 		if (StringUtil.equalsIgnoreCase(oAuthAuthorizeParam.getResponseType(), GlobalVariable.OAUTH_TOKEN_RESPONSE_TYPE)) {
 			// 简化模式
 			OauthUserInfoToRedisBO oauthUserInfoToRedisBO = userInfoRedisService.get(userInfoRedisKey);
@@ -99,16 +100,16 @@ public class OauthController {
 			OauthToken oauthTokenInfoByCodePO = oauthGenerateService.generateOauthTokenInfoBO(true);
 			oauthSaveService.saveAccessToken(oauthTokenInfoByCodePO.getAccessToken(), oauthUserInfoToRedisBO.getUserAttribute(), oAuthAuthorizeParam.getClientId(), GlobalVariable.OAUTH_TOKEN_GRANT_TYPE);
 			oauthSaveService.saveRefreshToken(oauthTokenInfoByCodePO.getRefreshToken(), oauthUserInfoToRedisBO.getUserAttribute(), oAuthAuthorizeParam.getClientId(), GlobalVariable.OAUTH_TOKEN_GRANT_TYPE);
-			redirectUrl = getRedirectUrlWithAccessToken(oAuthAuthorizeParam.getRedirectUri(), oauthTokenInfoByCodePO);
+			finalRedirectUrl = getRedirectUrlWithAccessToken(redirectUri, oauthTokenInfoByCodePO);
 		} else {
 			// 授权码模式
 			String code = oauthGenerateService.generateCode();
 			oauthSaveService.saveCodeToRedis(code, tgcCookieValue, userInfoRedisKey, oAuthAuthorizeParam.getClientId());
-			redirectUrl = getRedirectUrlWithCode(oAuthAuthorizeParam.getRedirectUri(), oAuthAuthorizeParam.getState(), code);
+			finalRedirectUrl = getRedirectUrlWithCode(redirectUri, oAuthAuthorizeParam.getState(), code);
 		}
 
 		oauthSaveService.updateTgcAndUserInfoRedisKeyExpire(tgcCookieValue, userInfoRedisKey);
-		return GlobalVariable.REDIRECT_URI_PREFIX + redirectUrl;
+		return GlobalVariable.REDIRECT_URI_PREFIX + finalRedirectUrl;
 	}
 
 	/**
@@ -150,21 +151,22 @@ public class OauthController {
 
 		oauthSaveService.saveTgcToRedisAndCookie(tgc, maxTimeToLiveInSeconds, userInfoRedisKey, userAgent, requestIp, isRememberMe);
 
-		String redirectUrl;
+		String finalRedirectUrl;
+		String redirectUri = oauthFormLoginParam.getRedirectUri();
 		if (StringUtil.equalsIgnoreCase(oauthFormLoginParam.getResponseType(), GlobalVariable.OAUTH_TOKEN_RESPONSE_TYPE)) {
 			// 简化模式
 			OauthToken oauthToken = oauthGenerateService.generateOauthTokenInfoBO(true);
 			oauthSaveService.saveAccessToken(oauthToken.getAccessToken(), oauthUserAttribute, oauthFormLoginParam.getClientId(), GlobalVariable.OAUTH_TOKEN_GRANT_TYPE);
 			oauthSaveService.saveRefreshToken(oauthToken.getRefreshToken(), oauthUserAttribute, oauthFormLoginParam.getClientId(), GlobalVariable.OAUTH_TOKEN_GRANT_TYPE);
-			redirectUrl = getRedirectUrlWithAccessToken(oauthFormLoginParam.getRedirectUri(), oauthToken);
+			finalRedirectUrl = getRedirectUrlWithAccessToken(redirectUri, oauthToken);
 		} else {
 			// 授权码模式
 			String code = oauthGenerateService.generateCode();
 			oauthSaveService.saveCodeToRedis(code, tgc, userInfoRedisKey, oauthFormLoginParam.getClientId());
-			redirectUrl = getRedirectUrlWithCode(oauthFormLoginParam.getRedirectUri(), oauthFormLoginParam.getState(), code);
+			finalRedirectUrl = getRedirectUrlWithCode(redirectUri, oauthFormLoginParam.getState(), code);
 		}
 
-		return GlobalVariable.REDIRECT_URI_PREFIX + redirectUrl;
+		return GlobalVariable.REDIRECT_URI_PREFIX + finalRedirectUrl;
 
 	}
 
@@ -352,7 +354,7 @@ public class OauthController {
 			String replaceIgnoreCase = StringUtil.replaceIgnoreCase(authorizationHeader, GlobalVariable.BASIC_AUTH_UPPER_PREFIX, GlobalVariable.BASIC_AUTH_LOWER_PREFIX);
 			authorizationHeader = StringUtil.substringAfter(replaceIgnoreCase, GlobalVariable.BASIC_AUTH_LOWER_PREFIX);
 		}
-		String basic = CodecUtil.base64ToString(authorizationHeader);
+		String basic = CodecUtil.base64DecodeBySafe(authorizationHeader);
 		List<String> stringList = StringUtil.split(basic, ":");
 		if (stringList.size() < 2) {
 			return;
