@@ -16,17 +16,17 @@ import org.springframework.stereotype.Service;
 public class OauthClientService {
 
 	@Autowired
-	private StringRedisService<String, String> stringRedisService;
+	private StringRedisService<String, OauthClientToRedisBO> clientRedisService;
 
 	//=====================================业务处理 start=====================================
 
 	public OauthClientToRedisBO findByClientId(String clientId) {
 		String clientIdRedisKey = GlobalVariable.REDIS_CLIENT_ID_PREFIX + clientId;
-		String result = stringRedisService.get(clientIdRedisKey);
-		if (StringUtil.isBlank(result)) {
+		OauthClientToRedisBO result = clientRedisService.get(clientIdRedisKey);
+		if (null == result) {
 			throw new OauthApiException("client_id 不存在");
 		}
-		return JsonUtil.toObject(result, OauthClientToRedisBO.class);
+		return result;
 	}
 
 	//=====================================业务处理  end=====================================

@@ -24,7 +24,7 @@ import org.springframework.stereotype.Component;
 public class ApplicationTestDataInitRunner implements ApplicationRunner {
 
 	@Autowired
-	private StringRedisService<String, String> stringRedisService;
+	private StringRedisService<String, OauthClientToRedisBO> clientRedisService;
 
 	@Autowired
 	private StringRedisService<String, OauthCodeToRedisBO> codeRedisService;
@@ -46,7 +46,7 @@ public class ApplicationTestDataInitRunner implements ApplicationRunner {
 		log.info("=================================预设 Redis 测试数据 Start=================================");
 
 		OauthClientToRedisBO oauthClientToRedisBO = getClient();
-		stringRedisService.set(GlobalVariable.REDIS_CLIENT_ID_PREFIX + oauthClientToRedisBO.getClientId(), JsonUtil.toJson(oauthClientToRedisBO));
+		clientRedisService.set(GlobalVariable.REDIS_CLIENT_ID_PREFIX + oauthClientToRedisBO.getClientId(), oauthClientToRedisBO);
 
 		accessTokenRedisService.set("AT-102-uUCkO2NgITHWJSD16g89C9loMwCVSQqh", getAccessToken(), oauthProperties.getAccessTokenMaxTimeToLiveInSeconds());
 		refreshTokenRedisService.set("RT-103-zIYUBA0ddql5cyYGEdpmPcRJH63hOVpQ", getRefreshToken(), oauthProperties.getRefreshTokenMaxTimeToLiveInSeconds());
