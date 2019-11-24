@@ -45,7 +45,7 @@ public class OauthCheckParamService {
 			throw new OauthApiException(e.getMessage(), ResponseProduceTypeEnum.HTML);
 		}
 
-		OauthTgcToRedisBO oauthTgcToRedisBO = tgcRedisService.get(tgcCookieValue);
+		OauthTgcToRedisBO oauthTgcToRedisBO = tgcRedisService.get(GlobalVariable.REDIS_TGC_KEY_PREFIX + tgcCookieValue);
 		if (null == oauthTgcToRedisBO) {
 			throw new OauthApiException("TGC 已失效，请重新登录", ResponseProduceTypeEnum.HTML, GlobalVariable.DEFAULT_LOGIN_PAGE_PATH);
 		}
@@ -99,7 +99,7 @@ public class OauthCheckParamService {
 			throw new OauthApiException("access_token 参数格式不对，必须包含：" + GlobalVariable.OAUTH_ACCESS_TOKEN_PREFIX);
 		}
 
-		OauthAccessTokenToRedisBO oauthAccessTokenToRedisBO = accessTokenRedisService.get(accessToken);
+		OauthAccessTokenToRedisBO oauthAccessTokenToRedisBO = accessTokenRedisService.get(GlobalVariable.REDIS_OAUTH_ACCESS_TOKEN_KEY_PREFIX + accessToken);
 		if (null == oauthAccessTokenToRedisBO) {
 			throw new OauthApiException("access_token 已失效");
 		}

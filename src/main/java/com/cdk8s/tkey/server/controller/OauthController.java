@@ -221,7 +221,7 @@ public class OauthController {
 		String tokenTypeHint = oauthIntrospectTokenParam.getTokenTypeHint();
 		if (StringUtil.equalsIgnoreCase(tokenTypeHint, GlobalVariable.OAUTH_ACCESS_TOKEN_TYPE_HINT)) {
 			// 验证 AccessToken
-			OauthAccessTokenToRedisBO oauthTokenToRedisDTO = accessTokenRedisService.get(token);
+			OauthAccessTokenToRedisBO oauthTokenToRedisDTO = accessTokenRedisService.get(GlobalVariable.REDIS_OAUTH_ACCESS_TOKEN_KEY_PREFIX + token);
 			if (null == oauthTokenToRedisDTO) {
 				throw new OauthApiException("token 已失效");
 			}
@@ -230,7 +230,7 @@ public class OauthController {
 			oauthIntrospect.setExp(iat + oauthProperties.getAccessTokenMaxTimeToLiveInSeconds());
 		} else if (StringUtil.equalsIgnoreCase(tokenTypeHint, GlobalVariable.OAUTH_REFRESH_TOKEN_GRANT_TYPE)) {
 			// 验证 RefreshToken
-			OauthRefreshTokenToRedisBO oauthTokenToRedisDTO = refreshTokenRedisService.get(token);
+			OauthRefreshTokenToRedisBO oauthTokenToRedisDTO = refreshTokenRedisService.get(GlobalVariable.REDIS_OAUTH_REFRESH_TOKEN_KEY_PREFIX + token);
 			if (null == oauthTokenToRedisDTO) {
 				throw new OauthApiException("token 已失效");
 			}
@@ -253,7 +253,7 @@ public class OauthController {
 
 		String tgcCookieValue = CookieUtil.getCookie(request, GlobalVariable.OAUTH_SERVER_COOKIE_KEY);
 		if (StringUtil.isNotBlank(tgcCookieValue)) {
-			tgcRedisService.delete(tgcCookieValue);
+			tgcRedisService.delete(GlobalVariable.REDIS_TGC_KEY_PREFIX + tgcCookieValue);
 			CookieUtil.deleteCookie(request, response, GlobalVariable.OAUTH_SERVER_COOKIE_KEY);
 		}
 

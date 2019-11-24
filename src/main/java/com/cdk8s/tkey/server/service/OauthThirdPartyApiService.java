@@ -54,7 +54,7 @@ public class OauthThirdPartyApiService {
 	private OauthUserAttribute getUserInfoApi(String username) {
 		String userInfoJson = "{\n" +
 				"  \"email\": \"" + username + "@cdk8s.com\",\n" +
-				"  \"userId\": \"111222333\",\n" +
+				"  \"userId\": \"111111111111111111\",\n" +
 				"  \"username\": \"" + username + "\"\n" +
 				"}";
 

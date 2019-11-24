@@ -33,7 +33,7 @@ public class OauthGenerateService {
 	}
 
 	public String generateUserInfoRedisKey(String userId) {
-		return GlobalVariable.OAUTH_USER_INFO_REDIS_KEY_PREFIX + userId;
+		return GlobalVariable.REDIS_OAUTH_USER_INFO_KEY_PREFIX + userId;
 	}
 
 	public String generateTgc() {

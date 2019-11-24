@@ -5,7 +5,6 @@ import com.cdk8s.tkey.server.constant.GlobalVariable;
 import com.cdk8s.tkey.server.pojo.bo.cache.*;
 import com.cdk8s.tkey.server.pojo.dto.OauthUserAttribute;
 import com.cdk8s.tkey.server.properties.OauthProperties;
-import com.cdk8s.tkey.server.util.CookieUtil;
 import com.cdk8s.tkey.server.util.DatetimeUtil;
 import com.cdk8s.tkey.server.util.UserAgentUtil;
 import com.cdk8s.tkey.server.util.redis.StringRedisService;
@@ -14,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.concurrent.TimeUnit;
 
 
@@ -62,7 +60,7 @@ public class OauthSaveService {
 		oauthCodeToRedisBO.setClientId(clientId);
 		oauthCodeToRedisBO.setIat(DatetimeUtil.currentEpochSecond());
 
-		codeRedisService.set(code, oauthCodeToRedisBO, oauthProperties.getCodeMaxTimeToLiveInSeconds(), TimeUnit.SECONDS);
+		codeRedisService.set(GlobalVariable.REDIS_OAUTH_CODE_PREFIX_KEY_PREFIX + code, oauthCodeToRedisBO, oauthProperties.getCodeMaxTimeToLiveInSeconds(), TimeUnit.SECONDS);
 	}
 
 	@Async
@@ -76,12 +74,12 @@ public class OauthSaveService {
 		oauthTgcToRedisBO.setUserInfoRedisKey(userInfoRedisKey);
 
 		oauthTgcToRedisBO.setIat(DatetimeUtil.currentEpochSecond());
-		tgcRedisService.set(tgc, oauthTgcToRedisBO, maxTimeToLiveInSeconds, TimeUnit.SECONDS);
+		tgcRedisService.set(GlobalVariable.REDIS_TGC_KEY_PREFIX + tgc, oauthTgcToRedisBO, maxTimeToLiveInSeconds, TimeUnit.SECONDS);
 	}
 
 	@Async
 	public void updateTgcAndUserInfoRedisKeyExpire(String tgc, String userInfoRedisKey) {
-		tgcRedisService.expire(tgc, oauthProperties.getTgcAndUserInfoMaxTimeToLiveInSeconds(), TimeUnit.SECONDS);
+		tgcRedisService.expire(GlobalVariable.REDIS_TGC_KEY_PREFIX + tgc, oauthProperties.getTgcAndUserInfoMaxTimeToLiveInSeconds(), TimeUnit.SECONDS);
 		userInfoRedisService.expire(userInfoRedisKey, oauthProperties.getTgcAndUserInfoMaxTimeToLiveInSeconds(), TimeUnit.SECONDS);
 	}
 
@@ -120,11 +118,11 @@ public class OauthSaveService {
 	//=====================================私有方法 start=====================================
 
 	private void saveAccessTokenToRedis(String accessToken, OauthAccessTokenToRedisBO oauthAccessTokenToRedisBO) {
-		accessTokenRedisService.set(accessToken, oauthAccessTokenToRedisBO, oauthProperties.getAccessTokenMaxTimeToLiveInSeconds(), TimeUnit.SECONDS);
+		accessTokenRedisService.set(GlobalVariable.REDIS_OAUTH_ACCESS_TOKEN_KEY_PREFIX + accessToken, oauthAccessTokenToRedisBO, oauthProperties.getAccessTokenMaxTimeToLiveInSeconds(), TimeUnit.SECONDS);
 	}
 
 	private void saveRefreshTokenToRedis(String refreshToken, OauthRefreshTokenToRedisBO oauthRefreshTokenToRedisBO) {
-		refreshTokenRedisService.set(refreshToken, oauthRefreshTokenToRedisBO, oauthProperties.getRefreshTokenMaxTimeToLiveInSeconds(), TimeUnit.SECONDS);
+		refreshTokenRedisService.set(GlobalVariable.REDIS_OAUTH_REFRESH_TOKEN_KEY_PREFIX + refreshToken, oauthRefreshTokenToRedisBO, oauthProperties.getRefreshTokenMaxTimeToLiveInSeconds(), TimeUnit.SECONDS);
 	}
 
 	//=====================================私有方法  end=====================================

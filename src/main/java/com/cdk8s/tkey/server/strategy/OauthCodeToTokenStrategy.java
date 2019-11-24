@@ -43,7 +43,7 @@ public class OauthCodeToTokenStrategy implements OauthTokenStrategyInterface {
 	public void checkParam(OauthTokenParam oauthTokenParam, OauthTokenStrategyHandleBO oauthTokenStrategyHandleBO) {
 		oauthCheckParamService.checkOauthTokenParam(oauthTokenParam);
 
-		OauthCodeToRedisBO oauthCodeToRedisBO = codeRedisService.get(oauthTokenParam.getCode());
+		OauthCodeToRedisBO oauthCodeToRedisBO = codeRedisService.get(GlobalVariable.REDIS_OAUTH_CODE_PREFIX_KEY_PREFIX + oauthTokenParam.getCode());
 		if (null == oauthCodeToRedisBO) {
 			throw new OauthApiException("code 无效");
 		}
@@ -67,7 +67,7 @@ public class OauthCodeToTokenStrategy implements OauthTokenStrategyInterface {
 		oauthSaveService.saveRefreshToken(oauthToken.getRefreshToken(), userAttribute, oauthTokenParam.getClientId(), GlobalVariable.OAUTH_CODE_GRANT_TYPE);
 
 		// code 只能被用一次，这里用完会立马被删除
-		codeRedisService.delete(oauthTokenParam.getCode());
+		codeRedisService.delete(GlobalVariable.REDIS_OAUTH_CODE_PREFIX_KEY_PREFIX + oauthTokenParam.getCode());
 		return oauthToken;
 	}
 

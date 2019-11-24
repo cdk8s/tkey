@@ -1,6 +1,7 @@
 package com.cdk8s.tkey.server.init;
 
 import com.cdk8s.tkey.server.constant.GlobalVariable;
+import com.cdk8s.tkey.server.constant.GlobalVariableToJunit;
 import com.cdk8s.tkey.server.pojo.bo.cache.OauthAccessTokenToRedisBO;
 import com.cdk8s.tkey.server.pojo.bo.cache.OauthClientToRedisBO;
 import com.cdk8s.tkey.server.pojo.bo.cache.OauthCodeToRedisBO;
@@ -24,7 +25,7 @@ import org.springframework.stereotype.Component;
 public class ApplicationTestDataInitRunner implements ApplicationRunner {
 
 	@Autowired
-	private StringRedisService<String, OauthClientToRedisBO> clientRedisService;
+	private StringRedisService<String, String> clientRedisService;
 
 	@Autowired
 	private StringRedisService<String, OauthCodeToRedisBO> codeRedisService;
@@ -46,12 +47,12 @@ public class ApplicationTestDataInitRunner implements ApplicationRunner {
 		log.info("=================================预设 Redis 测试数据 Start=================================");
 
 		OauthClientToRedisBO oauthClientToRedisBO = getClient();
-		clientRedisService.set(GlobalVariable.REDIS_CLIENT_ID_PREFIX + oauthClientToRedisBO.getClientId(), oauthClientToRedisBO);
+		clientRedisService.set(GlobalVariable.REDIS_CLIENT_ID_KEY_PREFIX + oauthClientToRedisBO.getClientId(), JsonUtil.toJson(oauthClientToRedisBO));
 
-		accessTokenRedisService.set("AT-102-uUCkO2NgITHWJSD16g89C9loMwCVSQqh", getAccessToken(), oauthProperties.getAccessTokenMaxTimeToLiveInSeconds());
-		refreshTokenRedisService.set("RT-103-zIYUBA0ddql5cyYGEdpmPcRJH63hOVpQ", getRefreshToken(), oauthProperties.getRefreshTokenMaxTimeToLiveInSeconds());
-		codeRedisService.set("OC-106-uUddPxoWCEa4NBO5GaVIRJOTZLlWbHNr", getCode(), oauthProperties.getCodeMaxTimeToLiveInSeconds());
-		codeRedisService.set("OC-107-uUddPxoWCEa4NBO5GaVIRJOTZLlWbHNr", getCode(), oauthProperties.getCodeMaxTimeToLiveInSeconds());
+		accessTokenRedisService.set(GlobalVariable.REDIS_OAUTH_ACCESS_TOKEN_KEY_PREFIX + GlobalVariableToJunit.ACCESS_TOKEN, getAccessToken(), oauthProperties.getAccessTokenMaxTimeToLiveInSeconds());
+		refreshTokenRedisService.set(GlobalVariable.REDIS_OAUTH_REFRESH_TOKEN_KEY_PREFIX + GlobalVariableToJunit.REFRESH_TOKEN, getRefreshToken(), oauthProperties.getRefreshTokenMaxTimeToLiveInSeconds());
+		codeRedisService.set(GlobalVariable.REDIS_OAUTH_CODE_PREFIX_KEY_PREFIX + GlobalVariableToJunit.CODE, getCode(), oauthProperties.getCodeMaxTimeToLiveInSeconds());
+		codeRedisService.set(GlobalVariable.REDIS_OAUTH_CODE_PREFIX_KEY_PREFIX + GlobalVariableToJunit.CODE2, getCode(), oauthProperties.getCodeMaxTimeToLiveInSeconds());
 
 		log.info("=================================预设 Redis 测试数据 End=================================");
 
@@ -62,9 +63,9 @@ public class ApplicationTestDataInitRunner implements ApplicationRunner {
 
 	private OauthClientToRedisBO getClient() {
 		OauthClientToRedisBO oauthClientToRedisBO = new OauthClientToRedisBO();
-		oauthClientToRedisBO.setId(111111L);
+		oauthClientToRedisBO.setId(GlobalVariableToJunit.ID_LONG);
 		oauthClientToRedisBO.setClientName("通用测试系统1");
-		oauthClientToRedisBO.setClientId("test_client_id_1");
+		oauthClientToRedisBO.setClientId(GlobalVariableToJunit.CLIENT_ID);
 		oauthClientToRedisBO.setClientSecret("test_client_secret_1");
 		oauthClientToRedisBO.setClientUrl("^(http|https)://.*");
 		oauthClientToRedisBO.setClientDesc("通用测试系统1");
@@ -75,22 +76,22 @@ public class ApplicationTestDataInitRunner implements ApplicationRunner {
 	private OauthAccessTokenToRedisBO getAccessToken() {
 		OauthAccessTokenToRedisBO oauthAccessTokenToRedisBO = new OauthAccessTokenToRedisBO();
 		OauthUserAttribute oauthUserAttribute = new OauthUserAttribute();
-		oauthUserAttribute.setEmail("admin@cdk8s.com");
-		oauthUserAttribute.setUserId("111222333");
-		oauthUserAttribute.setUsername("admin");
+		oauthUserAttribute.setEmail(GlobalVariableToJunit.USER_EMAIL);
+		oauthUserAttribute.setUserId(GlobalVariableToJunit.USER_ID);
+		oauthUserAttribute.setUsername(GlobalVariableToJunit.USERNAME);
 
 		oauthAccessTokenToRedisBO.setUserAttribute(oauthUserAttribute);
-		oauthAccessTokenToRedisBO.setGrantType("authorization_code");
-		oauthAccessTokenToRedisBO.setClientId("test_client_id_1");
+		oauthAccessTokenToRedisBO.setGrantType(GlobalVariableToJunit.CODE_GRANT_TYPE);
+		oauthAccessTokenToRedisBO.setClientId(GlobalVariableToJunit.CLIENT_ID);
 		oauthAccessTokenToRedisBO.setIat(1561522123L);
 		return oauthAccessTokenToRedisBO;
 	}
 
 	private OauthRefreshTokenToRedisBO getRefreshToken() {
 		OauthRefreshTokenToRedisBO oauthRefreshTokenToRedisBO = new OauthRefreshTokenToRedisBO();
-		oauthRefreshTokenToRedisBO.setUserInfoRedisKey("USER-111222333");
-		oauthRefreshTokenToRedisBO.setGrantType("authorization_code");
-		oauthRefreshTokenToRedisBO.setClientId("test_client_id_1");
+		oauthRefreshTokenToRedisBO.setUserInfoRedisKey(GlobalVariableToJunit.USER_INFO_REDIS_KEY);
+		oauthRefreshTokenToRedisBO.setGrantType(GlobalVariableToJunit.CODE_GRANT_TYPE);
+		oauthRefreshTokenToRedisBO.setClientId(GlobalVariableToJunit.CLIENT_ID);
 		oauthRefreshTokenToRedisBO.setIat(1561522123L);
 		return oauthRefreshTokenToRedisBO;
 
@@ -98,9 +99,9 @@ public class ApplicationTestDataInitRunner implements ApplicationRunner {
 
 	private OauthCodeToRedisBO getCode() {
 		OauthCodeToRedisBO oauthCodeToRedisBO = new OauthCodeToRedisBO();
-		oauthCodeToRedisBO.setTgc("TGC-101-1uo81h7S5ho3ItlGA4cYdF4YIfpOkJDJ");
-		oauthCodeToRedisBO.setUserInfoRedisKey("USER-111222333");
-		oauthCodeToRedisBO.setClientId("test_client_id_1");
+		oauthCodeToRedisBO.setTgc(GlobalVariableToJunit.TGC);
+		oauthCodeToRedisBO.setUserInfoRedisKey(GlobalVariableToJunit.USER_INFO_REDIS_KEY);
+		oauthCodeToRedisBO.setClientId(GlobalVariableToJunit.CLIENT_ID);
 		oauthCodeToRedisBO.setIat(1561522123L);
 		return oauthCodeToRedisBO;
 	}

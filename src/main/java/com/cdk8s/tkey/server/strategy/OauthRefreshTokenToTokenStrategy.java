@@ -42,7 +42,7 @@ public class OauthRefreshTokenToTokenStrategy implements OauthTokenStrategyInter
 	public void checkParam(OauthTokenParam oauthTokenParam, OauthTokenStrategyHandleBO oauthTokenStrategyHandleBO) {
 		oauthCheckParamService.checkOauthRefreshTokenParam(oauthTokenParam);
 
-		OauthRefreshTokenToRedisBO oauthRefreshTokenToRedisBO = refreshTokenRedisService.get(oauthTokenParam.getRefreshToken());
+		OauthRefreshTokenToRedisBO oauthRefreshTokenToRedisBO = refreshTokenRedisService.get(GlobalVariable.REDIS_OAUTH_REFRESH_TOKEN_KEY_PREFIX + oauthTokenParam.getRefreshToken());
 		if (null == oauthRefreshTokenToRedisBO) {
 			throw new OauthApiException("refresh_token 已失效");
 		}
