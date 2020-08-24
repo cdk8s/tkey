@@ -32,14 +32,13 @@
 ![登陆完整过程](http://img.gitnavi.com/tkey/tkey-sso-login.gif)
 
 - **注意：带宽只有 1M，访问会慢** 
-- 本地添加下面 hosts 才能正常访问和重定向到登录页面（必备）
-
-```
-182.61.44.40 sso.cdk8s.com
-```
-
-- 访问地址：[TKey SSO Client Management](http://sso.cdk8s.com/tkey-sso-client-management-frontend/TKeyClient)
-
+- 一共3个完整系统：
+    - 第一个是后台管理系统，包含用户管理：<http://180.76.142.211/sculptor-boot-frontend/index>
+    - 第二个是演示系统Client-1：<http://180.76.142.211/client-rest-1/user>
+    - 第三个是演示系统Client-2：<http://180.76.142.211/client-rest-2/user>
+- 同一个浏览器同时访问三个站点会发现都需要跳去登录，表明三个系统链接都是需要登录才可以访问
+- 先登录第一个系统
+- 然后访问第二个系统、第三个系统会发现直接返回用户 JSON 信息
 
 ## Architecture
 
