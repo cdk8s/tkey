@@ -134,8 +134,10 @@ public class OauthCheckParamService {
 			throw new OauthApiException("client_secret 参数不能为空");
 		}
 
-		if (StringUtil.notEqualsIgnoreCase(oauthClientToRedisBO.getClientSecret(), clientSecret)) {
-			throw new OauthApiException("client_id 与 client_secret 不匹配");
+		if (StringUtil.isNotBlank(clientSecret)) {
+			if (StringUtil.notEqualsIgnoreCase(oauthClientToRedisBO.getClientSecret(), clientSecret)) {
+				throw new OauthApiException("client_id 与 client_secret 不匹配");
+			}
 		}
 	}
 
