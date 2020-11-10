@@ -43,7 +43,7 @@ public class OauthPasswordToTokenStrategy implements OauthTokenStrategyInterface
 	public OauthToken handle(OauthTokenParam oauthTokenParam, OauthTokenStrategyHandleBO oauthTokenStrategyHandleBO) {
 		String clientId = oauthTokenParam.getClientId();
 		String clientSecret = oauthTokenParam.getClientSecret();
-		oauthCheckParamService.checkClientIdAndClientSecretParam(clientId, clientSecret);
+		oauthCheckParamService.checkClientIdAndClientSecretParam(clientId, clientSecret, false);
 		String username = oauthTokenParam.getUsername();
 		String password = oauthTokenParam.getPassword();
 		oauthCheckParamService.checkUsernamePasswordParam(username, password);

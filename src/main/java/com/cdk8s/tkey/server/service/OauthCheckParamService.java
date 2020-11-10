@@ -126,15 +126,15 @@ public class OauthCheckParamService {
 		return oauthClientToRedisBO;
 	}
 
-	public void checkClientIdAndClientSecretParam(String clientId, String clientSecret) {
+	public void checkClientIdAndClientSecretParam(String clientId, String clientSecret, Boolean clientSecretIsRequired) {
 
 		OauthClientToRedisBO oauthClientToRedisBO = checkClientIdParam(clientId);
 
-		if (StringUtil.isBlank(clientSecret)) {
+		if (clientSecretIsRequired && StringUtil.isBlank(clientSecret)) {
 			throw new OauthApiException("client_secret 参数不能为空");
 		}
 
-		if (StringUtil.isNotBlank(clientSecret)) {
+		if (clientSecretIsRequired) {
 			if (StringUtil.notEqualsIgnoreCase(oauthClientToRedisBO.getClientSecret(), clientSecret)) {
 				throw new OauthApiException("client_id 与 client_secret 不匹配");
 			}

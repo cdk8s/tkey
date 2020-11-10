@@ -29,7 +29,7 @@ public class OauthClientToTokenStrategy implements OauthTokenStrategyInterface {
 
 	@Override
 	public void checkParam(OauthTokenParam oauthTokenParam, OauthTokenStrategyHandleBO oauthTokenStrategyHandleBO) {
-		oauthCheckParamService.checkClientIdAndClientSecretParam(oauthTokenParam.getClientId(), oauthTokenParam.getClientSecret());
+		oauthCheckParamService.checkClientIdAndClientSecretParam(oauthTokenParam.getClientId(), oauthTokenParam.getClientSecret(), true);
 	}
 
 	@Override
